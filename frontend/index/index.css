@@ -42,11 +42,11 @@ a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.adventure {
+.skills {
     background-color: #f44336;
 }
 
-.adventure:hover {
+.skills:hover {
     background-color: #d32f2f;
 }
 

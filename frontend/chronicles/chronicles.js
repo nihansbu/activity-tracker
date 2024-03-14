@@ -1,19 +1,5 @@
 const { ipcRenderer } = require('electron');
 
-function updateCurrentRapDisplay(currentRap) {
-    const currentRapElement = document.getElementById('currentRap');
-    currentRapElement.textContent = currentRap;
-}
-
-// Current RAP display
-ipcRenderer.send('getPlayerCurrentRap');
-ipcRenderer.on('playerCurrentRap', (event, currentRap) => {
-    updateCurrentRapDisplay(currentRap);
-});
-ipcRenderer.on('playerRapUpdated', () => {
-    ipcRenderer.send('getPlayerCurrentRap');
-});
-
 
 // Chronicles display
 ipcRenderer.on('chronicles', (event, chronicles) => {
@@ -84,7 +70,6 @@ ipcRenderer.on('chronicles', (event, chronicles) => {
             // Save the updated counter to the database
             ipcRenderer.send('updateChronicleCounter', chronicle);
             ipcRenderer.send('rewardPlayerRap', chronicle.reward);
-            ipcRenderer.send('updatePlayerRap', chronicle.reward);
         });
     });
 });
