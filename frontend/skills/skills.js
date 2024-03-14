@@ -9,15 +9,23 @@ window.onload = function() {
             const card = document.createElement('div');
             card.className = 'skill-card';
 
+            const infoContainer = document.createElement('div');
+            infoContainer.className = 'skill-info-container';
+
             const name = document.createElement('div');
-            name.textContent = skill.name;
-            card.appendChild(name);
+            name.className = 'skill-name';
+            name.textContent = skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
+            infoContainer.appendChild(name);
 
             const level = document.createElement('div');
-            level.textContent = `Level: ${skill.currentLevel}/${skill.maxLevel}`;
-            card.appendChild(level);
+            level.className = 'skill-level';
+            level.textContent = `${skill.currentLevel}/${skill.maxLevel}`;
+            infoContainer.appendChild(level);
+
+            card.appendChild(infoContainer);
 
             const img = document.createElement('img');
+            img.className = 'skill-img';
             img.src = `../../assets/${skill.image}`;
             card.appendChild(img);
 
