@@ -1,4 +1,5 @@
 const { ipcRenderer } = require('electron');
+const { levelUpSkill } = require('../../database/database_operations_skills.js');
 
 window.onload = function() {
     ipcRenderer.send('getSkills');
@@ -28,6 +29,14 @@ window.onload = function() {
             img.className = 'skill-img';
             img.src = `../../assets/${skill.image}`;
             card.appendChild(img);
+
+            card.addEventListener('click', () => {
+                levelUpSkill(skill.name, () => {
+                    console.log('Skill leveled up!');
+                    // You might want to update the displayed level here
+                    level.textContent = `${skill.currentLevel + 1}/${skill.maxLevel}`;
+                });
+            });
 
             container.appendChild(card);
         });

@@ -95,3 +95,14 @@
     height: 10%;
     border: solid 1px black;
 }
+
+.chronicle-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100%;
+    background-color: #f2f2f2;
+    border: none;
+    cursor: pointer;
+}

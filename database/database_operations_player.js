@@ -27,6 +27,8 @@ async function getPlayerCurrentRap() {
     });
 }
 
+// Spaghetti, Is currently used in chronicles/.
+// Future: Replace with a more generic function that can be used for all rewards.
 function rewardPlayerRap(reward, callback) {
     const db = getDb();
     db.run('UPDATE players SET currentRap = currentRap + ?, totalRap = totalRap + ?', [reward, reward], (err) => {
@@ -39,8 +41,30 @@ function rewardPlayerRap(reward, callback) {
     });
 }
 
+// Generic function that can be used for all rewards.
+function modifyPlayerRap(amount, callback) {
+    const db = getDb();
+    db.get('SELECT currentRap FROM players WHERE id = 1', [], (err, row) => {
+        if (err) {
+            throw err;
+        }
+        const newRap = row.currentRap + amount;
+        if (newRap < 0) {
+            console.log('Not enough RAP to complete operation');
+            return;
+        }
+        db.run('UPDATE players SET currentRap = ? WHERE id = 1', [newRap], (err) => {
+            if (err) {
+                throw err;
+            }
+            callback();
+        });
+    });
+}
+
 module.exports = {
     getPlayerById,
     rewardPlayerRap,
-    getPlayerCurrentRap
+    getPlayerCurrentRap,
+    modifyPlayerRap
 };
