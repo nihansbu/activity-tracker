@@ -33,8 +33,10 @@ window.onload = function() {
             card.addEventListener('click', () => {
                 levelUpSkill(skill.name, () => {
                     console.log('Skill leveled up!');
-                    // You might want to update the displayed level here
-                    level.textContent = `${skill.currentLevel + 1}/${skill.maxLevel}`;
+                    // Update the skill object's currentLevel property
+                    skill.currentLevel++;
+                    // Then update the displayed level
+                    level.textContent = `${skill.currentLevel}/${skill.maxLevel}`;
                 });
             });
 
