@@ -44,20 +44,31 @@ ipcRenderer.on('chronicles', (event, chronicles) => {
         const tagContainer = document.createElement('div');
         tagContainer.className = 'chronicle-tag-container';
 
-        const tag1 = document.createElement('div');
-        tag1.className = 'chronicle-tag';
-        tag1.textContent = chronicle.type1;
-        tagContainer.appendChild(tag1);
+        let types = ['type1', 'type2', 'type3'];
 
-        const tag2 = document.createElement('div');
-        tag2.className = 'chronicle-tag';
-        tag2.textContent = chronicle.type2;
-        tagContainer.appendChild(tag2);
+        types.forEach(type => {
+            if (chronicle[type] !== '') {
+                let tagDiv = document.createElement('div');
+                tagDiv.classList.add('chronicle-tag');
+                tagDiv.textContent = chronicle[type];
+                tagContainer.appendChild(tagDiv);
+            }
+        });
 
-        const tag3 = document.createElement('div');
-        tag3.className = 'chronicle-tag';
-        tag3.textContent = chronicle.type3;
-        tagContainer.appendChild(tag3);
+        // const tag1 = document.createElement('div');
+        // tag1.className = 'chronicle-tag';
+        // tag1.textContent = chronicle.type1;
+        // tagContainer.appendChild(tag1);
+
+        // const tag2 = document.createElement('div');
+        // tag2.className = 'chronicle-tag';
+        // tag2.textContent = chronicle.type2;
+        // tagContainer.appendChild(tag2);
+
+        // const tag3 = document.createElement('div');
+        // tag3.className = 'chronicle-tag';
+        // tag3.textContent = chronicle.type3;
+        // tagContainer.appendChild(tag3);
 
         card.appendChild(tagContainer);
 
