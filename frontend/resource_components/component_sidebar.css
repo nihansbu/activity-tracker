@@ -1,0 +1,19 @@
+/* frontend/resource_components/sidebar.css */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px; /* adjust as needed */
+    background-color: #333; /* adjust as needed */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar a {
+    display: block;
+    color: white; /* adjust as needed */
+    text-decoration: none;
+    margin-bottom: 10px;
+}

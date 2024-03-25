@@ -21,6 +21,7 @@ a {
 }
 
 .bar-container {
+    margin-left: 220px;
     flex: 1;
     display: flex;
     justify-content: space-between;

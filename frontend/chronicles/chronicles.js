@@ -21,19 +21,32 @@ ipcRenderer.on('chronicles', (event, chronicles) => {
         img.src = '../../assets/' + chronicle.image;
         card.appendChild(img);
 
+        // Info container
         const infoContainer = document.createElement('div');
         infoContainer.className = 'chronicle-info-container';
 
-        const unit = document.createElement('div');
-        unit.className = 'chronicle-unit';
-        unit.textContent = chronicle.unitCount + " " + chronicle.unit;
-        infoContainer.appendChild(unit);
+        // Unit container
+        const unitContainer = document.createElement('div');
+        unitContainer.className = 'chronicle-unit-container';
 
+        const unitIcon = document.createElement('img');
+        unitIcon.className = 'chronicle-unit-icon';
+        unitIcon.src = '../../assets/chronicles_icon_measurement.png';
+        unitContainer.appendChild(unitIcon);
+
+        const unitText = document.createElement('div');
+        unitText.className = 'chronicle-unit-text';
+        unitText.textContent = chronicle.unitCount + " " + chronicle.unit;
+        unitContainer.appendChild(unitText);
+        infoContainer.appendChild(unitContainer);
+
+        // Reward container
         const reward = document.createElement('div');
         reward.className = 'reward';
         reward.textContent = chronicle.reward;
         infoContainer.appendChild(reward);
 
+        // Counter
         const counter = document.createElement('div');
         counter.className = 'chronicle-counter';
         counter.textContent = chronicle.counter;
